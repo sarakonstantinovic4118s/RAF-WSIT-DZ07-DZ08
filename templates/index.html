@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title> Home Page </title>
+		<style>	
+			img{
+				width: 200px;
+				height: 200px;
+			}
+			.avatar{
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			{% if korisnik['username']|string == '' %}
+			<a href="/login"><button>Login</button></a>
+			{% else %}
+			<a href="/logout"><button>Logout</button></a>
+			{% endif %}
+			<h1>{{korisnik['username']}}</h1>
+			{% for p in proizvodi %}
+				<div class="proizvod">
+					<h3>{{p["naziv"]}}</h3>
+					<p>Cena: {{p['cena']}}</p>
+					<img src="..{{p['slika']}}" alt="">
+					<br><br>
+					{% if (korisnik['_id']|string() == p['prodavac']|string()) or korisnik['tip_korisnika']|string() == 'admin' %}
+						<a href="/update_proizvod/{{p['_id']}}"><button>Izmeni</button></a>
+						<a href="/delete_proizvod/{{p['_id']}}"><button>Obrisi</button></a>
+					{% endif %}
+
+				</div>
+			{% endfor %}
+			<br>
+			{% if korisnik['tip_korisnika']|string() == 'admin' %}
+			<table border="0">
+				{% for k in korisnici %}
+						<tr>
+							<td>{{loop.index}}.</td>
+							<td><img class="avatar" src="{{k['slika']}}" alt=""><br><p>{{k['username']}}</p></td>
+							<td><a href="/update_korisnik/{{k['_id']}}"><button>Izmeni</button></a></td>
+							<td><a href="/delete_korisnik/{{k['_id']}}"><button>Obrisi</button></a></td>
+						</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+		</div>
+	</body>
+</html>

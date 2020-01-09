@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title> Update Page </title>
+	</head>
+	<body>
+		<form action = '/update_proizvod/{{id}}' method = 'POST' enctype="multipart/form-data">
+			Naziv: <input type = 'text' name = 'naziv' /> </br>
+			Cena: <input type = 'text' name = 'cena' /> </br>
+			Kolicina: <input type = 'text' name = 'kolicina' /> </br>
+			<p>Slika: <input type="file" name="slika" ></p> </br>
+			<input type = 'submit' value = 'Izmeni!' /></br>
+		</form>
+	</body>
+</html>

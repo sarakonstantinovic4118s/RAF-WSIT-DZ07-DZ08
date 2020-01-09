@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title> Register Page </title>
+	</head>
+	<body>
+		<form action = '/registracija' method = 'POST' enctype="multipart/form-data">
+			Username: <input type = 'text' name = 'username' /> </br>
+			Email: <input type = 'text' name = 'email' /> </br>
+			Password: <input type = 'password' name = 'password1' /></br>
+			Confirm password: <input type = 'password' name = 'password2' /></br>
+			Pol: <select name="pol">
+				<option value="muski">Muski</option>
+				<option value="zenski">Zenski</option>
+			</select> </br>
+			Godina rodjenja: <input type = 'text' name = 'godina_rodjenja' /> </br>
+			<select name="usertype">
+				<option value="admin">admin</option>
+				<option value="prodavac">prodavac</option>
+			</select> </br>
+			<p>Slika: <input type="file" name="profile_pic" ></p> </br>
+			<input type = 'submit' value = 'Registruj se!' /></br>
+		</form>
+	</body>
+</html>
